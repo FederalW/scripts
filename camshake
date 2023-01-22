@@ -1,12 +1,27 @@
---[[
-___________.__             ___________           .___ 
-\__    ___/|  |__   ____   \_   _____/ ____    __| _/ 
-  |    |   |  |  \_/ __ \   |    __)_ /    \  / __ |  
-  |    |   |   Y  \  ___/   |        \   |  \/ /_/ |  
-  |____|   |___|  /\___  > /_______  /___|  /\____ |  
-                \/     \/          \/     \/      \/  
-This Script Was Obfuscated By The End! Dm feds#0002 For More Info 
-[Beta-0.2.3] - Enjoy This Script, Feds
-(Joke btw i use diff obf)
---]]
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v16,v17)local v19={};for v20=1, #v16 do v6(v19,v0(v4(v1(v2(v16,v20,v20 + 1)),v1(v2(v17,1 + ((v20-1)% #v17),1 + ((v20-1)% #v17) + 1)))%256));end return v5(v19);end local v8=getgenv().camshake.keybind;getgenv().camshake=getgenv().camshake.enabled;getgenv().lolza=false;getgenv().shake_cam_speed=getgenv().camshake.speed;getgenv().shake_cam_value=getgenv().camshake.pixels;BB=function()x=math.random( -getgenv().shake_cam_value,getgenv().shake_cam_value);y=math.random( -getgenv().shake_cam_value,getgenv().shake_cam_value);mousemoverel(x,y);end;game:GetService(v7("\34\174\35\71\52\90\7\168\50\102\24\70\1\180\37\80","\119\221\70\53\125\52")).InputBegan:Connect(function(v18)if ((getgenv().camshake==true) and (v18.KeyCode==Enum.KeyCode[v8:upper()]) and  not game:GetService(v7("\107\198\182\221\42\169\78\192\167\252\6\181\72\220\176\202","\62\181\211\175\99\199")):GetFocusedTextBox()) then if getgenv().lolza then getgenv().lolza=false;elseif  not getgenv().shake_cam then getgenv().lolza=true;while getgenv().lolza do BB();task.wait(getgenv().shake_cam_speed);end end end end);
+local KeyCode = getgenv().camshake.keybind
+getgenv().camshake = getgenv().camshake.enabled 
+getgenv().lolza = false
+getgenv().shake_cam_speed = getgenv().camshake.speed
+getgenv().shake_cam_value = getgenv().camshake.pixels
+
+function BB()
+  x = math.random(-getgenv().shake_cam_value,getgenv().shake_cam_value)
+y = math.random(-getgenv().shake_cam_value,getgenv().shake_cam_value)
+mousemoverel(x,y)
+end
+
+game:GetService('UserInputService').InputBegan:Connect(function(Key)
+    if getgenv().camshake == true and Key.KeyCode == Enum.KeyCode[KeyCode:upper()] and not game:GetService('UserInputService'):GetFocusedTextBox() then
+        if getgenv().lolza then
+            getgenv().lolza = false
+
+        elseif not getgenv().shake_cam then
+            getgenv().lolza = true
+
+            while getgenv().lolza do
+                BB()
+                task.wait(getgenv().shake_cam_speed)
+            end
+        end
+    end
+end)
