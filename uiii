@@ -510,7 +510,7 @@ function Assets.Snowflakes(WindowAsset)
         Particle.Object.Size = UDim2.fromOffset(RandomSize,RandomSize)
         Particle.Velocity = Vector2.new(RandomXVelocity,RandomYVelocity)
         Particle.Position = Vector2.new(RandomPosition * WindowAsset.Background.AbsoluteSize.X,0)
-        Particle.MaxAge = 15 task.wait(0.5) Particle.Object.Visible = false
+        Particle.MaxAge = 15 task.wait(0.5) Particle.Object.Visible = true
     end
 
 
