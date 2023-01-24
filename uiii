@@ -505,7 +505,7 @@ function Assets.Snowflakes(WindowAsset)
         local RandomYVelocity = NewRandom:NextInteger(10,35)
         local RandomXVelocity = NewRandom:NextInteger(-35,35)
 
-        Particle.Object.ImageTransparency = RandomSize / 50
+        Particle.Object.ImageTransparency = RandomSize / 0
         Particle.Object.Size = UDim2.fromOffset(RandomSize,RandomSize)
         Particle.Velocity = Vector2.new(RandomXVelocity,RandomYVelocity)
         Particle.Position = Vector2.new(RandomPosition * WindowAsset.Background.AbsoluteSize.X,0)
