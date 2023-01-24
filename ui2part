@@ -19,7 +19,7 @@ function ParticleEmitter.new(ParentObject,ParticleObject)
     Self.OnSpawn = function() end
     Self.ElapsedTime = 0
     Self.Particles = {}
-    Self.SpawnRate = 5
+    Self.SpawnRate = 2.5
     Self.Dead = false
 
     Self.Connection = RunService.RenderStepped:Connect(function(Delta)
