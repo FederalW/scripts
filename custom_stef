@@ -89,7 +89,7 @@ end
 
 -- // Customisable Checking Functions: Is a part visible
 function Aiming.IsPartVisible(Part, PartDescendant)
-    task.wait(0.045)
+    task.wait(0.01)
     -- // Vars
     local Character = LocalPlayer.Character or CharacterAddedWait(CharacterAdded)
     local Origin = CurrentCamera.CFrame.Position
@@ -122,7 +122,7 @@ end
 
 -- // Ignore player
 function Aiming.IgnorePlayer(Player)
-    task.wait(0.065)
+    task.wait(0.025)
     -- // Vars
     local Ignored = Aiming.Ignored
     local IgnoredPlayers = Ignored.Players
@@ -142,7 +142,7 @@ end
 
 -- // Unignore Player
 function Aiming.UnIgnorePlayer(Player)
-    task.wait(0.065)
+    task.wait(0.035)
     -- // Vars
     local Ignored = Aiming.Ignored
     local IgnoredPlayers = Ignored.Players
@@ -163,7 +163,7 @@ end
 
 -- // Ignore team
 function Aiming.IgnoreTeam(Team, TeamColor)
-    task.wait(0.065)
+    task.wait(0.025)
     -- // Vars
     local Ignored = Aiming.Ignored
     local IgnoredTeams = Ignored.Teams
@@ -183,7 +183,7 @@ end
 
 -- // Unignore team
 function Aiming.UnIgnoreTeam(Team, TeamColor)
-    task.wait(0.065)
+    task.wait(0.025)
     -- // Vars
     local Ignored = Aiming.Ignored
     local IgnoredTeams = Ignored.Teams
@@ -204,7 +204,7 @@ end
 
 -- //  Toggle team check
 function Aiming.TeamCheck(Toggle)
-    task.wait(0.065)
+    task.wait(0.025)
     if (Toggle) then
         return Aiming.IgnoreTeam(LocalPlayer.Team, LocalPlayer.TeamColor)
     end
@@ -214,7 +214,7 @@ end
 
 -- // Check teams
 function Aiming.IsIgnoredTeam(Player)
-    task.wait(0.065)
+    task.wait(0.025)
     -- // Vars
     local Ignored = Aiming.Ignored
     local IgnoredTeams = Ignored.Teams
@@ -256,7 +256,7 @@ end
 
 -- // Get the Direction, Normal and Material
 function Aiming.Raycast(Origin, Destination, UnitMultiplier)
-    task.wait(0.15)
+    task.wait(0.055)
     if (typeof(Origin) == "Vector3" and typeof(Destination) == "Vector3") then
         -- // Handling
         if (not UnitMultiplier) then UnitMultiplier = 1 end
@@ -285,7 +285,7 @@ end
 
 -- // Check Health
 function Aiming.CheckHealth(Player)
-    task.wait(0.1)
+    task.wait(0.07)
     -- // Get Humanoid
     local Character = Aiming.Character(Player)
     local Humanoid = FindFirstChildWhichIsA(Character, "Humanoid")
@@ -305,7 +305,7 @@ Aiming.checkSilentAim = Aiming.Check
 
 -- // Get Closest Target Part
 function Aiming.GetClosestTargetPartToCursor(Character)
-    task.wait(0.025)
+    task.wait(0.02)
     local TargetParts = Aiming.AimParts
 
     -- // Vars
@@ -317,7 +317,7 @@ function Aiming.GetClosestTargetPartToCursor(Character)
 
     -- //
     local function CheckTargetPart(TargetPart)
-        task.wait(0.035)
+        task.wait(0.025)
         -- // Convert string -> Instance
         if (typeof(TargetPart) == "string") then
             TargetPart = FindFirstChild(Character, TargetPart)
@@ -377,7 +377,7 @@ end
 
 -- // Silent Aim Function
 function Aiming.GetClosestPlayerToCursor()
-    task.wait(0.065)
+    task.wait(0.03)
     -- // Vars
     local TargetPart = nil
     local ClosestPlayer = nil
