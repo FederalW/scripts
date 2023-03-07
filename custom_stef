@@ -36,11 +36,11 @@ getgenv().Aiming = {
     Enabled = true,
 
     FOV_Visible = true,
-    FOV_Size = 25,
+    FOV_Size = 60,
     FOV_Filled = false,
     FOV_Transparency = 0.5,
     FOV_Thickness = 1.5,
-    FOV_Colour = Color3fromRGB(231, 84, 128),
+    FOV_Colour = Color3fromRGB(1, 1, 1),
     
     WallCheck = true,
     Selected = nil,
