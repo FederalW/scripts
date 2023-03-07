@@ -45,7 +45,7 @@ getgenv().Aiming = {
     WallCheck = true,
     Selected = nil,
     SelectedPart = nil,
-    AimParts = {'Head', 'UpperTorso', 'HumanoidTorso', 'LowerTorso', 'RightLowerArm', 'LeftLowerArm', 'RightLowerLeg', 'LeftLowerLeg'},
+    AimParts = {'Head', 'UpperTorso', 'HumanoidTorso', 'LowerTorso', 'RightLowerArm', 'LeftLowerArm', 'RightLowerLeg', 'LeftLowerLeg', 'RightUpperArm', 'LeftUpperArm', 'RightUpperLeg', 'LeftUpperLeg'},
 
     Ignored = {
         Teams = {
