@@ -36,7 +36,7 @@ getgenv().Aiming = {
     Enabled = true,
 
     FOV_Visible = true,
-    FOV_Size = 60,
+    FOV_Size = 35,
     FOV_Filled = false,
     FOV_Transparency = 0.5,
     FOV_Thickness = 1.5,
