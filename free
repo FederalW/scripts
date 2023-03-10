@@ -1,0 +1,82 @@
+local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/FederalW/scripts/main/custom_stef",true))()
+Aiming.TeamCheck(false)
+Aiming.FOV_Visible = getgenv().RAHHHHH.ShowFOV
+Aiming.FOV_Size = getgenv().RAHHHHH.FOVSize
+
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local CurrentCamera = Workspace.CurrentCamera
+
+function Aiming.Check()
+    if not (Aiming.Enabled == true and Aiming.Selected ~= LocalPlayer and Aiming.SelectedPart ~= nil) then
+        return false
+    end
+
+    local Character = Aiming.Character(Aiming.Selected)
+    local KOd = Character:WaitForChild("BodyEffects")["K.O"].Value
+    local Grabbed = Character:FindFirstChild("GRABBING_CONSTRAINT") ~= nil
+
+    if (KOd or Grabbed) then
+        return false
+    end
+
+    return true
+end
+
+game:GetService("RunService").Heartbeat:Connect(
+    function()
+            if
+            getgenv().RAHHHHH.Range == true and Aiming.Selected ~= nil and (Aiming.Selected.Character) then
+            if
+                (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
+                getgenv().RAHHHHH.RangeDetections[1]
+            then
+                Aiming.FOV_Size = getgenv().RAHHHHH.Ranges[1]
+            elseif
+                (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
+                getgenv().RAHHHHH.RangeDetections[2]
+            then
+                Aiming.FOV_Size = getgenv().RAHHHHH.Ranges[2]
+            elseif
+                (game.Players[Aiming.Selected.Name].Character.HumanoidRootPart.Position -
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
+                getgenv().RAHHHHH.RangeDetections[3]
+            then
+                Aiming.FOV_Size = getgenv().RAHHHHH.Ranges[3]
+        end
+    end
+end)
+
+local __index
+__index = hookmetamethod(game, "__index", function(t, k)
+    if (t:IsA("Mouse") and (k == "Hit" or k == "Target") and Aiming.Check()) then
+        local SelectedPart = Aiming.SelectedPart
+
+        if (getgenv().RAHHHHH.Silent and (k == "Hit" or k == "Target")) then
+            local Hit = SelectedPart.CFrame + (SelectedPart.Velocity * getgenv().RAHHHHH.Prediction)
+
+            return (k == "Hit" and Hit or SelectedPart)
+        end
+    end
+
+    return __index(t, k)
+end)
+
+RS.Heartbeat:Connect(function()
+if getgenv().RAHHHHH.AntiGroundShot == true then
+        if getgenv().RAHHHHH.AntiGroundShot == true and Aiming.Selected.Character:FindFirstChild("Humanoid") == Enum.HumanoidStateType.Freefall then
+            pcall(function()
+                local TargetVelv5 = Aiming.SelectedPart
+                TargetVelv5.Velocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 5), TargetVelv5.Velocity.Z)
+                TargetVelv5.AssemblyLinearVelocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 5), TargetVelv5.Velocity.Z)
+            end)
+        end 
+    end 
+end)
