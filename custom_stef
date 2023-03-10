@@ -302,7 +302,6 @@ Aiming.checkSilentAim = Aiming.Check
 
 -- // Get Closest Target Part
 function Aiming.GetClosestTargetPartToCursor(Character)
-    task.wait(0.05)
     local TargetParts = Aiming.AimParts
 
     -- // Vars
@@ -314,7 +313,7 @@ function Aiming.GetClosestTargetPartToCursor(Character)
 
     -- //
     local function CheckTargetPart(TargetPart)
-        task.wait(0.015)
+
         -- // Convert string -> Instance
         if (typeof(TargetPart) == "string") then
             TargetPart = FindFirstChild(Character, TargetPart)
@@ -374,7 +373,7 @@ end
 
 -- // Silent Aim Function
 function Aiming.GetClosestPlayerToCursor()
-    task.wait(0.05)
+
     -- // Vars
     local TargetPart = nil
     local ClosestPlayer = nil
