@@ -17,7 +17,7 @@ local UpdateFOV = function ()
 
     if Tonka then
         Circle.Visible = Tonka.Fov["Visible"]
-        Circle.Radius = Tonka.Fov.Radius * 3
+        Circle.Radius = Tonka.Fov.Radius * 2.9461
     else
         return Tonka
     end
