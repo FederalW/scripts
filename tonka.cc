@@ -1,7 +1,3 @@
-if (not getgenv().Tonka or TonkaSilent) then
-    return Tonka
-end
-
 local Players, Client, Mouse, RS, Camera, r =
 	game:GetService("Players"),
 	game:GetService("Players").LocalPlayer,
@@ -20,8 +16,8 @@ local UpdateFOV = function ()
     end
 
     if Tonka then
-        Circle.Visible = Tonka.FOV["Visible"]
-        Circle.Radius = Tonka.FOV.Radius * 3
+        Circle.Visible = Tonka.Fov["Visible"]
+        Circle.Radius = Tonka.Fov.Radius * 3
     else
         return Tonka
     end
@@ -95,7 +91,6 @@ local GetClosestBodyPart = function (character)
     return BodyPart
 end
 
-
 local Prey
 local PartToUse = Tonka.TonkaSilent.Part
 
@@ -105,12 +100,12 @@ task.spawn(function ()
             if Tonka.TonkaSilent.Enabled and Tonka.TonkaSilent.ClosestPart == true then
                 PartToUse = tostring(GetClosestBodyPart(Prey.Character))
             end
-            if Tonka.Config.UnlockOnDeath == true then
+            if Tonka.TonkaSilent.UnlockOnDeath == true then
                 if Prey.Character.Humanoid.Health < 2 then
                     Prey = nil
                 end
             end
-            if Tonka.Config.UnlockOnYourDeath == true then
+            if Tonka.TonkaSilent.UnlockOnYourDeath == true then
                 if Client.Character.Humanoid.Health < 2 then
                     Prey = nil
                 end
@@ -121,7 +116,7 @@ task.spawn(function ()
 					playertoresolve.Velocity = Vector3.new(0, 0, 0)
 				end
 			end
-			if Tonka.Config.AntiGroundShots then
+			if Tonka.TonkaSilent.AntiGroundShots then
 				pcall(function()
                     local TargetVelv5 = Prey.Character[Tonka.TonkaSilent.Part]
                     TargetVelv5.Velocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 0.5), TargetVelv5.Velocity.Z)
@@ -155,31 +150,4 @@ grmt.__index = newcclosure(function(self, v)
         end
     end
     return backupindex(self, v)
-end)
-
-
-
-local Script = {Functions = {}}
-    Script.Functions.getToolName = function(name)
-        local split = string.split(string.split(name, "[")[2], "]")[1]
-        return split
-    end
-    Script.Functions.getEquippedWeaponName = function()
-        if (Client.Character) and Client.Character:FindFirstChildWhichIsA("Tool") then
-           local Tool =  Client.Character:FindFirstChildWhichIsA("Tool")
-           if string.find(Tool.Name, "%[") and string.find(Tool.Name, "%]") and not string.find(Tool.Name, "Wallet") and not string.find(Tool.Name, "Phone") then
-              return Script.Functions.getToolName(Tool.Name)
-           end
-        end
-        return nil
-    end
-    RS.RenderStepped:Connect(function()
-    if Script.Functions.getEquippedWeaponName() ~= nil then
-        local WeaponTonka = Tonka.FOV.GunFOV[Script.Functions.getEquippedWeaponName()]
-        if WeaponTonka ~= nil and Tonka.FOV.GunFOV.Enabled == true then
-            Tonka.FOV.Radius = WeaponTonka.FOV 
-        else
-            Tonka.FOV.Radius = Tonka.FOV.Radius
-        end
-    end
 end)
