@@ -1103,7 +1103,7 @@ Library.NewWindow = function(project_name, ui_info)
                 local keybind_funcs = {}
 
                 keybind_funcs.SetKeybind = function(newbind)
-                    if newbind ~= Enum.KeyCode.Backspace and Enum.KeyCode[sub(tostring(newbind), 14, #tostring(newbind))] ~= nil then
+                    if newbind ~= Enum.KeyCode.Backspace or newbind ~= Enum.KeyCode.W or newbind ~= Enum.KeyCode.A or newbind ~= Enum.KeyCode.S or newbind ~= Enum.KeyCode.D or newbind ~= Enum.KeyCode.Space or newbind ~= Enum.KeyCode.CapsLock or newbind ~= Enum.KeyCode.LeftShift and Enum.KeyCode[sub(tostring(newbind), 14, #tostring(newbind))] ~= nil then
                         Current_Keybind = newbind
                         Detector.Text = sub(tostring(Current_Keybind), 14, #tostring(Current_Keybind))
                         SCALE()
